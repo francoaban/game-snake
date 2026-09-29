@@ -1,0 +1,160 @@
+:root {
+  color-scheme: light;
+  --ink: #18231d;
+  --muted: #68766d;
+  --paper: #f3f2e9;
+  --lime: #d6f36a;
+  --coral: #ff765e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 360px;
+  margin: 0;
+  padding: 18px;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image: radial-gradient(#18231d12 0.7px, transparent 0.7px);
+  background-size: 8px 8px;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+.game-shell {
+  display: grid;
+  gap: 12px;
+}
+
+.topbar,
+.scoreboard,
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topbar {
+  min-height: 48px;
+}
+
+.eyebrow,
+.score-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 1px 0 0;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.key-hint {
+  padding: 7px 9px;
+  border: 1px solid #18231d2b;
+  border-radius: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.scoreboard {
+  padding: 9px 12px;
+  border-top: 1px solid #18231d24;
+  border-bottom: 1px solid #18231d24;
+}
+
+.score-item {
+  display: grid;
+  gap: 2px;
+}
+
+.score-item strong {
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.score-best {
+  text-align: right;
+}
+
+#bestValue {
+  color: #6f8c27;
+}
+
+#gameCanvas {
+  display: block;
+  width: 320px;
+  height: 320px;
+  border: 3px solid var(--ink);
+  border-radius: 3px;
+  background: #162821;
+  image-rendering: pixelated;
+}
+
+.status {
+  min-height: 18px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.controls {
+  gap: 8px;
+}
+
+.button {
+  min-height: 38px;
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 100ms ease, opacity 100ms ease;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.button-primary {
+  flex: 1;
+  background: var(--lime);
+}
+
+.button-secondary {
+  flex: 1;
+  background: #fffefa;
+}
+
+.button-quiet {
+  width: 42px;
+  background: var(--coral);
+  font-size: 20px;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

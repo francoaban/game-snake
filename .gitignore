@@ -1,0 +1,22 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editores
+.idea/
+*.swp
+*.swo
+*~
+
+# Node.js y herramientas de desarrollo
+node_modules/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Salidas generadas y paquetes de Firefox
+dist/
+web-ext-artifacts/
+*.xpi

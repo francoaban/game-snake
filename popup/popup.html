@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Snake</title>
+
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ARCADE / 01</p>
+        <h1>Snake</h1>
+      </div>
+      <span class="key-hint" aria-label="Controles: flechas, P para pausar, R para reiniciar">↑ ↓ ← →</span>
+    </header>
+
+    <section class="scoreboard" aria-label="Marcador">
+      <div class="score-item">
+        <span class="score-label">Puntos</span>
+        <strong id="scoreValue">0</strong>
+      </div>
+      <div class="score-item score-best">
+        <span class="score-label">Récord</span>
+        <strong id="bestValue">0</strong>
+      </div>
+    </section>
+
+    <canvas id="gameCanvas" width="320" height="320" role="img" aria-label="Tablero de Snake"></canvas>
+
+    <p id="gameStatus" class="status" aria-live="polite">Pulsa Iniciar para jugar</p>
+
+    <div class="controls">
+      <button id="startButton" class="button button-primary" type="button">Iniciar</button>
+      <button id="pauseButton" class="button button-secondary" type="button" disabled>Pausar</button>
+      <button id="restartButton" class="button button-quiet" type="button" aria-label="Reiniciar partida" title="Reiniciar (R)">
+        <span aria-hidden="true">↻</span>
+      </button>
+    </div>
+  </main>
+
+  <script src="../game/snake.js"></script>
+  <script src="../game/food.js"></script>
+  <script src="../game/collision.js"></script>
+  <script src="../game/board.js"></script>
+  <script src="../game/score.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
