@@ -1,6 +1,4 @@
-window.SnakeGame = window.SnakeGame || {};
-
-window.SnakeGame.createFood = function (columns, rows, snake, random = Math.random) {
+export function createFood(columns, rows, snake, random = Math.random) {
   const occupied = new Set(snake.map((segment) => `${segment.x},${segment.y}`));
   const available = [];
 
@@ -17,4 +15,4 @@ window.SnakeGame.createFood = function (columns, rows, snake, random = Math.rand
   }
 
   return available[Math.floor(random() * available.length)];
-};
+}

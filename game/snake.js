@@ -1,40 +1,40 @@
-window.SnakeGame = window.SnakeGame || {};
+export function createSnake(columns, rows) {
+  const centerX = Math.floor(columns / 2);
+  const centerY = Math.floor(rows / 2);
 
-window.SnakeGame.createSnake = function (columns, rows) {
-	const centerX = Math.floor(columns / 2);
-	const centerY = Math.floor(rows / 2);
+  return [
+    { x: centerX, y: centerY },
+    { x: centerX - 1, y: centerY },
+    { x: centerX - 2, y: centerY }
+  ];
+}
 
-	return [
-		{ x: centerX, y: centerY },
-		{ x: centerX - 1, y: centerY },
-		{ x: centerX - 2, y: centerY }
-	];
+const MOVEMENTS = {
+  up: { x: 0, y: -1 },
+  down: { x: 0, y: 1 },
+  left: { x: -1, y: 0 },
+  right: { x: 1, y: 0 }
 };
 
-window.SnakeGame.getNextHead = function (snake, direction) {
-	const movement = {
-		up: { x: 0, y: -1 },
-		down: { x: 0, y: 1 },
-		left: { x: -1, y: 0 },
-		right: { x: 1, y: 0 }
-	}[direction];
+export function getNextHead(snake, direction) {
+  const movement = Object.hasOwn(MOVEMENTS, direction) ? MOVEMENTS[direction] : null;
 
-	if (!movement) {
-		throw new Error(`Dirección no válida: ${direction}`);
-	}
+  if (!movement) {
+    throw new Error(`Dirección no válida: ${direction}`);
+  }
 
-	return {
-		x: snake[0].x + movement.x,
-		y: snake[0].y + movement.y
-	};
-};
+  return {
+    x: snake[0].x + movement.x,
+    y: snake[0].y + movement.y
+  };
+}
 
-window.SnakeGame.moveSnake = function (snake, nextHead, grow) {
-	const nextSnake = [nextHead, ...snake];
+export function moveSnake(snake, nextHead, grow) {
+  const nextSnake = [nextHead, ...snake];
 
-	if (!grow) {
-		nextSnake.pop();
-	}
+  if (!grow) {
+    nextSnake.pop();
+  }
 
-	return nextSnake;
-};
+  return nextSnake;
+}

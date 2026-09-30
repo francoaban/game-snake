@@ -119,7 +119,9 @@ h1 {
   font-size: 12px;
   font-weight: 800;
   cursor: pointer;
-  transition: transform 100ms ease, opacity 100ms ease;
+  transition:
+    transform 100ms ease,
+    opacity 100ms ease;
 }
 
 .button:hover:not(:disabled) {
