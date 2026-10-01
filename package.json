@@ -1,0 +1,29 @@
+{
+  "name": "game-snake",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Extensión de Firefox con el juego Snake.",
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint:ext": "web-ext lint",
+    "start": "web-ext run",
+    "build": "web-ext build",
+    "check:security": "npm audit --audit-level=high",
+    "check": "npm run format:check && npm run lint && npm test && npm run lint:ext && npm run check:security"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.11.0",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.9",
+    "web-ext": "^10.7.0"
+  }
+}

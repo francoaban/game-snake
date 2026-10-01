@@ -1,61 +1,44 @@
 # 🐍 Snake — Firefox Extension
 
-Extensión para **Mozilla Firefox** que permite jugar al clásico juego **Snake** directamente desde el navegador, sin necesidad de abrir una página web externa.
+Extensión para **Mozilla Firefox** que permite jugar al clásico **Snake** directamente desde el popup del navegador, sin abrir una página externa.
 
-El proyecto está desarrollado utilizando el estándar **WebExtensions** y una arquitectura sencilla basada en **HTML, CSS y JavaScript**, con el objetivo de ser fácil de entender, modificar y utilizar como proyecto educativo.
+Está desarrollada con el estándar **WebExtensions** (Manifest V3) usando **HTML, CSS y JavaScript** sin dependencias en tiempo de ejecución. El objetivo es que sea fácil de entender, modificar y usar como proyecto educativo.
 
 ## Estado actual
 
-El proyecto se encuentra en una etapa inicial (`0.1.0`). El popup y las mecánicas principales del juego ya están implementados. Todavía están pendientes la verificación manual en Firefox, una suite de pruebas automatizadas y la preparación para publicación. Los hitos distinguen el trabajo implementado de las pruebas aún no realizadas.
+Versión `0.1.0`, en desarrollo. Las mecánicas del juego, la interfaz, las pruebas automatizadas, el tooling y la integración continua están implementados. **Todavía falta verificar la extensión manualmente en Firefox**, definir los recursos gráficos finales y publicarla. Los hitos distinguen lo implementado de lo verificado.
 
 ---
 
 ## 📋 Descripción
 
-**Snake Extension** agrega un pequeño juego de Snake al navegador Firefox.
-
-El usuario puede abrir la extensión desde la barra de herramientas e iniciar una partida desde el popup.
-
-El objetivo del juego es controlar una serpiente, recoger la comida y obtener la mayor cantidad de puntos posible sin chocar contra las paredes o contra el propio cuerpo de la serpiente.
+El usuario abre la extensión desde la barra de herramientas y juega desde el popup. Debe controlar una serpiente, recoger comida y sumar puntos sin chocar contra las paredes ni contra su propio cuerpo.
 
 ### Características principales
 
-* 🐍 Juego Snake ejecutado dentro de Firefox.
-* 🎮 Controles mediante teclado.
-* 🍎 Generación de comida.
-* 📊 Sistema de puntuación.
-* 🏆 Registro del mejor puntaje.
-* 🔄 Reinicio de partida.
-* ⏸️ Pausa del juego.
-* 💾 Persistencia del mejor puntaje mediante almacenamiento local.
-* 🎨 Interfaz compacta para el popup de Firefox.
-* 🔒 No requiere servidor.
-* 🔒 No requiere cuenta de usuario.
-* 🔒 No recopila información personal.
-* 🌐 No necesita conexión a Internet para jugar.
+- 🐍 Juego Snake ejecutado dentro de Firefox.
+- 🎮 Controles con teclado y botones.
+- 🍎 Comida generada siempre en una celda libre.
+- 📊 Puntuación y 🏆 récord persistente.
+- ⏸️ Pausa y 🔄 reinicio.
+- 💾 Si el popup se cierra durante la partida, se recupera en pausa al reabrirlo.
+- ⌨️ Cola de giros: las pulsaciones rápidas no se pierden.
+- 🔒 Sin servidor, sin cuenta, sin recopilar datos personales y sin conexión a Internet.
 
 ---
 
 # 🎯 Objetivo del proyecto
 
-El objetivo principal es desarrollar una extensión sencilla para Firefox utilizando tecnologías web estándar.
+Desarrollar una extensión sencilla para Firefox con tecnologías web estándar. También sirve para aprender:
 
-El proyecto también sirve como ejemplo para aprender:
-
-* HTML.
-* CSS.
-* JavaScript.
-* WebExtensions.
-* `manifest.json`.
-* Eventos del navegador.
-* Manipulación del DOM.
-* Canvas.
-* `localStorage` / almacenamiento de extensión.
-* Pruebas unitarias.
-* Control de versiones con Git.
-* Publicación de extensiones.
-
-La estructura sigue las recomendaciones generales para proyectos de extensiones: definir alcance, requisitos, diseño, código, pruebas, documentación y publicación.
+- HTML, CSS y JavaScript (módulos ES).
+- WebExtensions y `manifest.json`.
+- Canvas y manipulación del DOM.
+- `storage.local` y `storage.session`.
+- Separar la lógica del juego de la interfaz para poder probarla.
+- Pruebas unitarias, lint y formato.
+- Git, GitHub e integración continua.
+- Publicación de extensiones.
 
 ---
 
@@ -78,36 +61,31 @@ La versión `1.0.0` contempla:
 
 ## Fuera del alcance inicial
 
-Para mantener el proyecto sencillo, la primera versión no contempla:
+- Usuarios, registro e inicio de sesión.
+- Servidor backend y base de datos.
+- Juego multijugador.
+- Sincronización entre dispositivos.
+- Publicidad, analítica y compras.
+- Comunicación con servicios externos.
 
-* Usuarios.
-* Registro e inicio de sesión.
-* Servidor backend.
-* Base de datos.
-* Juego multijugador.
-* Sincronización entre dispositivos.
-* Publicidad.
-* Analítica de usuarios.
-* Compra de funcionalidades.
-* Comunicación con servicios externos.
-
-Esto permite mantener una extensión pequeña, con pocos permisos y fácil de probar.
+Esto mantiene la extensión pequeña, con pocos permisos y fácil de probar.
 
 ---
 
 # 🛠️ Tecnologías
 
-| Tecnología    | Uso                           |
-| ------------- | ----------------------------- |
-| HTML5         | Estructura de la interfaz     |
-| CSS3          | Diseño visual                 |
-| JavaScript    | Lógica del juego              |
-| Canvas API    | Renderizado del tablero       |
-| WebExtensions | Integración con Firefox       |
-| Manifest V3   | Configuración de la extensión |
-| Git           | Control de versiones          |
-| GitHub        | Repositorio y colaboración    |
-| Pruebas       | Suite automatizada pendiente  |
+| Tecnología              | Uso                            |
+| ----------------------- | ------------------------------ |
+| HTML5                   | Estructura de la interfaz      |
+| CSS3                    | Diseño visual                  |
+| JavaScript (módulos ES) | Lógica del juego               |
+| Canvas API              | Renderizado del tablero        |
+| WebExtensions           | Integración con Firefox        |
+| Manifest V3             | Configuración de la extensión  |
+| `node:test`             | Pruebas unitarias              |
+| ESLint y Prettier       | Calidad y formato del código   |
+| web-ext                 | Validar, ejecutar y empaquetar |
+| GitHub Actions          | Integración continua           |
 
 ---
 
@@ -115,334 +93,217 @@ Esto permite mantener una extensión pequeña, con pocos permisos y fácil de pr
 
 ```text
 game-snake/
-│
 ├── manifest.json
+├── package.json
+├── web-ext-config.mjs
+├── eslint.config.js
+├── .prettierrc.json
+├── .editorconfig
 ├── README.md
+├── CHANGELOG.md
 ├── LICENSE
-├── .gitignore
+├── icons/                  # Íconos provisionales
 ├── popup/
 │   ├── popup.html
 │   ├── popup.css
-│   └── popup.js
+│   └── popup.js            # Eventos, temporizador y renderizado
 ├── game/
-│   ├── board.js
+│   ├── engine.js           # Reglas del juego (funciones puras)
 │   ├── snake.js
 │   ├── food.js
 │   ├── collision.js
-│   └── score.js
+│   ├── board.js            # Dibujo en el canvas
+│   ├── score.js            # Récord (storage.local)
+│   └── session.js          # Partida en curso (storage.session)
+├── test/                   # Pruebas unitarias
+├── docs/
+│   ├── privacidad.md
+│   ├── plan-de-pruebas.md
+│   └── publicacion.md
+└── .github/                # CI y plantillas de issues y PR
 ```
-
-Actualmente no hay directorios `icons/`, `tests/` o `docs/`; se podrán incorporar en etapas posteriores.
 
 ---
 
 # 🧱 Arquitectura
 
-La extensión utiliza una arquitectura sencilla:
+La lógica del juego no conoce el navegador. `engine.js` recibe un estado y devuelve un estado nuevo, sin tocar el DOM, temporizadores ni almacenamiento. Por eso puede probarse con Node, sin Firefox.
 
 ```text
-┌───────────────────────────────┐
-│          Firefox              │
-│                               │
-│  ┌─────────────────────────┐  │
-│  │       Extension         │  │
-│  │                         │  │
-│  │  ┌───────────────────┐  │  │
-│  │  │     Popup         │  │  │
-│  │  │                   │  │  │
-│  │  │  HTML             │  │  │
-│  │  │  CSS              │  │  │
-│  │  │  JavaScript       │  │  │
-│  │  └─────────┬─────────┘  │  │
-│  │            │            │  │
-│  │            ▼            │  │
-│  │  ┌───────────────────┐  │  │
-│  │  │   Game Engine     │  │  │
-│  │  │                   │  │  │
-│  │  │ Snake             │  │  │
-│  │  │ Food              │  │  │
-│  │  │ Collision         │  │  │
-│  │  │ Score             │  │  │
-│  │  └─────────┬─────────┘  │  │
-│  │            │            │  │
-│  │            ▼            │  │
-│  │  ┌───────────────────┐  │  │
-│  │  │ Firefox Storage   │  │  │
-│  │  │                   │  │  │
-│  │  │ Best Score        │  │  │
-│  │  └───────────────────┘  │  │
-│  └─────────────────────────┘  │
-└───────────────────────────────┘
+┌────────────────────────────────────────────┐
+│ popup.js  (eventos, temporizador, render)  │
+└───────┬──────────────┬─────────────┬───────┘
+        │              │             │
+        ▼              ▼             ▼
+  ┌──────────┐   ┌──────────┐   ┌───────────────────┐
+  │ engine.js│   │ board.js │   │ score.js          │
+  │ (puro)   │   │ (canvas) │   │ session.js        │
+  └────┬─────┘   └──────────┘   │ (storage)         │
+       │                        └───────────────────┘
+       ▼
+  snake.js · food.js · collision.js
 ```
+
+### Fases del juego
+
+```text
+ready ──iniciar──▶ running ◀──continuar── paused
+                     │  ▲                    ▲
+                     │  └────reiniciar       └── pausar
+                     ├──colisión──▶ over
+                     └──tablero lleno──▶ won
+```
+
+`over` y `won` vuelven a `running` con una partida nueva al iniciar de nuevo.
 
 ---
 
 # 📜 Manifest
 
-El archivo `manifest.json` es el archivo principal de configuración de la extensión.
-
-Configuración actual:
+Configuración principal (resumen):
 
 ```json
 {
   "manifest_version": 3,
   "name": "Snake",
   "version": "0.1.0",
-  "description": "Juega Snake directamente desde Firefox.",
-  "action": {
-    "default_popup": "popup/popup.html",
-    "default_title": "Jugar Snake"
-  },
-  "permissions": [
-    "storage"
-  ]
+  "action": { "default_popup": "popup/popup.html" },
+  "permissions": ["storage"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "game-snake@francoaban.github.io",
+      "strict_min_version": "115.0",
+      "data_collection_permissions": { "required": ["none"] }
+    }
+  }
 }
 ```
 
-El manifiesto debe solicitar solamente los permisos necesarios. La guía del proyecto establece como criterio utilizar los permisos mínimos imprescindibles.
+El único permiso solicitado es `storage`. Se aplica el criterio de permisos mínimos. Consulta [`docs/publicacion.md`](docs/publicacion.md) para las advertencias esperadas de `web-ext lint` sobre `strict_min_version`.
 
 ---
 
 # 🎮 Cómo jugar
 
-Una vez instalada la extensión:
-
-1. Abrir Firefox.
-2. Hacer clic sobre el ícono de **Snake**.
-3. Presionar **Iniciar**.
-4. Utilizar las teclas:
-
-```text
-        ↑
-        │
-    ←───┼───→
-        │
-        ↓
-```
+1. Abre Firefox y haz clic en el ícono de **Snake**.
+2. Pulsa **Iniciar** o cualquier flecha.
+3. Recoge la comida sin chocar.
 
 ### Controles
 
-| Tecla | Acción                   |
-| ----- | ------------------------ |
-| ↑     | Mover hacia arriba       |
-| ↓     | Mover hacia abajo        |
-| ←     | Mover hacia la izquierda |
-| →     | Mover hacia la derecha   |
-| P     | Pausar                   |
-| R     | Reiniciar                |
+| Tecla   | Acción                                              |
+| ------- | --------------------------------------------------- |
+| ↑ ↓ ← → | Mover (la primera flecha también inicia la partida) |
+| P       | Pausar o continuar                                  |
+| Espacio | Pausar, continuar o iniciar                         |
+| R       | Reiniciar                                           |
+
+Los atajos se ignoran si están combinados con Ctrl, Cmd o Alt.
 
 ---
 
 # 🏆 Sistema de puntuación
 
-Cada alimento recogido aumenta la puntuación.
-
-Ejemplo:
-
-```text
-Comida recogida → +10 puntos
-```
-
-La interfaz mostrará:
-
-```text
-┌──────────────────────────┐
-│       🐍 SNAKE           │
-│                          │
-│   Puntos: 120            │
-│   Récord: 250            │
-│                          │
-│   ┌──────────────────┐   │
-│   │                  │   │
-│   │      🐍 🍎       │   │
-│   │                  │   │
-│   │                  │   │
-│   └──────────────────┘   │
-│                          │
-│       [ PAUSAR ]         │
-│       [ REINICIAR ]      │
-└──────────────────────────┘
-```
+Cada alimento recogido suma **10 puntos**. El récord se actualiza en cuanto se supera y se conserva entre sesiones.
 
 ---
 
 # 💾 Persistencia
 
-El mejor puntaje se almacenará utilizando el sistema de almacenamiento proporcionado por Firefox.
+| Dato             | Almacenamiento    | Duración             |
+| ---------------- | ----------------- | -------------------- |
+| Mejor puntaje    | `storage.local`   | Hasta desinstalar    |
+| Partida en curso | `storage.session` | Hasta cerrar Firefox |
 
-Conceptualmente:
-
-```javascript
-await browser.storage.local.set({
-  bestScore: 250
-});
-```
-
-Para recuperar el récord:
-
-```javascript
-const result = await browser.storage.local.get("bestScore");
-
-console.log(result.bestScore);
-```
-
-No se utilizará un servidor externo.
+Ambos se validan al leerlos: los datos corruptos se ignoran. No hay servidor externo. Detalles en [`docs/privacidad.md`](docs/privacidad.md).
 
 ---
 
-# 🧪 Estado de las pruebas
+# 🧪 Pruebas automatizadas
 
-Todavía no hay una suite automatizada ni un framework de pruebas configurado. Las reglas principales están separadas en módulos dentro de `game/`, lo que permitirá probarlas unitariamente en una etapa posterior.
-
-Los tests futuros deberían cubrir, como mínimo, estos casos:
-
-### Movimiento
-
-```text
-Dado:
-La serpiente está en X=5, Y=5.
-
-Cuando:
-Se mueve hacia la derecha.
-
-Entonces:
-La nueva posición debe ser X=6, Y=5.
+```bash
+npm test          # pruebas unitarias
+npm run check     # formato + lint + tests + web-ext lint
 ```
 
-### Comida
+Las pruebas cubren movimiento, comida, colisiones, victoria, cola de giros, pausa, reinicio, récord y recuperación de sesión. Ejemplo de lo que se verifica:
 
 ```text
-Dado:
-Existe una comida en el tablero.
-
-Cuando:
-La serpiente alcanza la comida.
-
-Entonces:
-La puntuación aumenta.
+Dado:     La serpiente está en X=5, Y=5.
+Cuando:   Se mueve hacia la derecha.
+Entonces: La nueva posición es X=6, Y=5.
 ```
 
-### Colisión
-
-```text
-Dado:
-La serpiente está próxima a una pared.
-
-Cuando:
-Se mueve hacia la pared.
-
-Entonces:
-La partida termina.
-```
-
-### Récord
-
-```text
-Dado:
-El récord actual es 100.
-
-Cuando:
-El jugador obtiene 150 puntos.
-
-Entonces:
-El nuevo récord debe ser 150.
-```
-
-### Reinicio
-
-```text
-Dado:
-La partida terminó.
-
-Cuando:
-El jugador presiona "Reiniciar".
-
-Entonces:
-La serpiente vuelve a su posición inicial.
-La puntuación vuelve a 0.
-La partida comienza nuevamente.
-```
+Detalle completo en [`docs/plan-de-pruebas.md`](docs/plan-de-pruebas.md).
 
 ---
 
 # 🔎 QA manual pendiente
 
-La lista siguiente todavía debe verificarse cargando la extensión en Firefox. Marcar una función como implementada en los hitos no significa que ya haya pasado estas pruebas manuales.
+Las pruebas automatizadas no reemplazan la verificación en Firefox. El checklist completo está en [`docs/plan-de-pruebas.md`](docs/plan-de-pruebas.md#qa-manual-en-firefox). Marca cada punto solo cuando lo hayas comprobado en el navegador.
 
-### Checklist
+### Resumen
 
-* [x] La extensión se instala correctamente.
-* [x] El popup se abre.
-* [x] El juego comienza.
-* [x] La serpiente se mueve.
-* [x] Las teclas funcionan.
-* [x] La comida aparece correctamente.
-* [x] La puntuación aumenta.
-* [x] La colisión funciona.
-* [x] La pausa funciona.
-* [x] Reiniciar funciona.
-* [x] El récord se guarda.
-* [ ] El récord permanece después de cerrar Firefox.
-* [ ] No aparecen errores en la consola.
-* [ ] No se solicitan permisos innecesarios.
+- [ ] La extensión se carga sin errores.
+- [ ] El juego completo funciona con teclado y botones.
+- [ ] El récord permanece después de cerrar Firefox.
+- [ ] La partida se recupera al reabrir el popup.
+- [ ] No aparecen errores en la consola.
+- [ ] No se solicitan permisos innecesarios.
 
 ---
 
 # 🦊 Prueba local en Firefox
 
-Antes de publicar la extensión, se debe probar localmente.
+Con web-ext (recarga automática al editar):
 
-Firefox permite cargar extensiones temporalmente desde:
-
-```text
-about:debugging
+```bash
+npm install
+npm start
 ```
 
-Luego:
+O manualmente:
 
 ```text
-about:debugging
-       ↓
-Este Firefox
-       ↓
-Cargar complemento temporal
-       ↓
-manifest.json
+about:debugging → Este Firefox → Cargar complemento temporal → manifest.json
 ```
-
-La extensión puede probarse de esta manera antes de enviarla a la tienda.
 
 ---
 
 # 📦 Instalación para desarrollo
 
-Clonar el repositorio:
-
 ```bash
 git clone https://github.com/francoaban/game-snake.git
-```
-
-Ingresar al proyecto:
-
-```bash
 cd game-snake
+npm install
 ```
 
-No es necesario un servidor backend para la versión inicial.
+Requiere Node.js 20 o superior solo para las herramientas de desarrollo. La extensión en sí no necesita compilación ni servidor.
 
-La extensión puede cargarse directamente desde Firefox utilizando `manifest.json`.
+### Scripts
+
+| Comando                | Descripción                             |
+| ---------------------- | --------------------------------------- |
+| `npm start`            | Abre Firefox con la extensión cargada   |
+| `npm test`             | Ejecuta las pruebas unitarias           |
+| `npm run lint`         | ESLint                                  |
+| `npm run format`       | Prettier (escribe cambios)              |
+| `npm run format:check` | Prettier (solo verifica)                |
+| `npm run lint:ext`     | Valida la extensión con web-ext         |
+| `npm run build`        | Genera el `.zip` en `web-ext-artifacts` |
+| `npm run check`        | Formato, lint, tests y web-ext lint     |
 
 ---
 
 # 🚀 Etapas del proyecto
 
-| Etapa | Estado actual |
-| --- | --- |
-| Preparación y estructura | Implementada: manifiesto, popup, módulos del juego y licencia. |
-| Base técnica y mecánicas | Implementadas en el código; falta confirmar la carga y el funcionamiento en Firefox. |
-| Pruebas automatizadas | Pendientes; no hay framework ni archivos de pruebas configurados. |
-| QA manual | Pendiente; usar la lista de verificación anterior. |
-| Publicación | Pendiente; faltan QA, recursos gráficos y preparación del paquete. |
+| Etapa                    | Estado actual                                                                     |
+| ------------------------ | --------------------------------------------------------------------------------- |
+| Preparación y estructura | Implementada: manifiesto, popup, módulos, licencia, tooling y CI.                 |
+| Base técnica y mecánicas | Implementadas. Falta confirmar la carga y el funcionamiento en Firefox.           |
+| Pruebas automatizadas    | Implementadas: `node:test` con pruebas del motor, el récord y la sesión.          |
+| QA manual                | Pendiente; usar el checklist de `docs/plan-de-pruebas.md`.                        |
+| Publicación              | Pendiente: faltan QA, íconos definitivos y capturas. Paquete y documentos listos. |
 
 ---
 
@@ -450,212 +311,122 @@ La extensión puede cargarse directamente desde Firefox utilizando `manifest.jso
 
 ## H1 — Proyecto iniciado
 
-* [x] Repositorio Git inicializado.
-* [x] Cuenta Mozilla creada.
-* [x] Publicación del repositorio GitHub confirmada.
+- [x] Repositorio Git inicializado.
+- [x] Cuenta Mozilla creada.
+- [x] Publicación del repositorio GitHub confirmada.
 
 ## H2 — Alcance aprobado
 
-* [ ] Objetivo definido.
-* [ ] Funciones definidas.
-* [ ] Funciones fuera del alcance identificadas.
-* [ ] Criterios de aceptación definidos.
+- [x] Objetivo definido.
+- [x] Funciones definidas.
+- [x] Funciones fuera del alcance identificadas.
+- [x] Criterios de aceptación definidos (`docs/plan-de-pruebas.md`).
 
 ## H3 — Diseño aprobado
 
-* [ ] Diseño del popup.
-* [ ] Diseño del tablero.
-* [ ] Diseño de botones.
-* [ ] Diseño del ícono.
-* [ ] Flujo del juego definido.
+- [x] Diseño del popup.
+- [x] Diseño del tablero.
+- [x] Diseño de botones.
+- [x] Diseño del ícono (provisional).
+- [x] Flujo del juego definido (fases en la sección de arquitectura).
 
 ## H4 — Extensión mínima
 
-* [x] `manifest.json`.
-* [x] Popup.
-* [ ] Firefox puede cargar la extensión.
+- [x] `manifest.json`.
+- [x] Popup.
+- [ ] Firefox puede cargar la extensión.
 
 ## H5 — Juego funcional
 
-* [x] Movimiento.
-* [x] Comida.
-* [x] Puntuación.
-* [x] Colisiones y fin de partida.
-* [x] Pausa y reinicio.
-* [x] Guardado del récord.
+- [x] Movimiento.
+- [x] Comida.
+- [x] Puntuación.
+- [x] Colisiones y fin de partida.
+- [x] Pausa y reinicio.
+- [x] Guardado del récord.
 
 Las marcas de H4 y H5 reflejan implementación en el código; la verificación en Firefox sigue pendiente en H7.
 
 ## H6 — Tests
 
-* [ ] Tests unitarios.
-* [ ] Tests de colisiones.
-* [ ] Tests de puntuación.
-* [ ] Tests de movimiento.
-* [ ] Tests de reinicio.
+- [x] Tests unitarios.
+- [x] Tests de colisiones.
+- [x] Tests de puntuación.
+- [x] Tests de movimiento.
+- [x] Tests de reinicio.
 
 ## H7 — QA
 
-* [ ] Pruebas manuales.
-* [ ] Pruebas de interfaz.
-* [ ] Pruebas de almacenamiento.
-* [ ] Pruebas de errores.
+- [ ] Pruebas manuales.
+- [ ] Pruebas de interfaz.
+- [ ] Pruebas de almacenamiento.
+- [ ] Pruebas de errores.
 
 ## H8 — Publicación
 
-* [ ] Íconos definitivos.
-* [ ] Capturas.
-* [ ] Descripción.
-* [ ] Política de privacidad.
-* [ ] Paquete `.zip`.
-* [ ] Notas para revisores.
+- [ ] Íconos definitivos (hay íconos provisionales).
+- [ ] Capturas.
+- [ ] Descripción del listado.
+- [x] Política de privacidad (`docs/privacidad.md`).
+- [x] Paquete `.zip` (`npm run build`).
+- [x] Notas para revisores (`docs/publicacion.md`).
 
 ## H9 — Publicación en Firefox
 
-* [ ] Paquete enviado.
-* [ ] Información completada.
-* [ ] Revisión superada.
+- [ ] Paquete enviado.
+- [ ] Información completada.
+- [ ] Revisión superada.
 
 ## H10 — Mantenimiento
 
-* [ ] Issues configurados.
-* [ ] Registro de cambios.
-* [ ] Versionado.
-* [ ] Proceso de actualización.
+- [x] Issues configurados (plantillas en `.github/`).
+- [x] Registro de cambios (`CHANGELOG.md`).
+- [x] Versionado (SemVer).
+- [x] Proceso de actualización (`docs/publicacion.md`).
 
 ---
 
-## Licencia
-
-Este proyecto se distribuye bajo una licencia basada en MIT.
-
-El código puede utilizarse, copiarse, modificarse y redistribuirse,
-incluyendo para proyectos comerciales.
-
-Las redistribuciones deben conservar la atribución al proyecto original.
-Las versiones modificadas deben indicar claramente que han sido
-modificadas respecto del proyecto original.
-
-Ver el archivo [LICENSE](LICENSE) para consultar los términos completos.
-
 # 🔐 Privacidad
 
-Snake no necesita recopilar información personal.
+Snake no necesita recopilar información personal. La extensión:
 
-La extensión:
+- No requiere registro, nombre ni correo electrónico.
+- No recopila historial de navegación.
+- No transmite datos a servidores externos ni realiza conexiones de red.
+- No utiliza publicidad ni analítica.
 
-* No requiere registro.
-* No solicita nombre.
-* No solicita correo electrónico.
-* No recopila historial de navegación.
-* No transmite datos a servidores externos.
-* No utiliza publicidad.
-* No utiliza analítica externa.
-
-El único dato persistente previsto para la primera versión es el **mejor puntaje**, almacenado localmente.
-
-La política de privacidad definitiva debe reflejar exactamente el comportamiento real de la versión publicada. La guía también establece que la política debe coincidir con los datos que realmente utiliza o transmite la extensión.
+Solo se guardan localmente el **mejor puntaje** y la **partida en curso**. La política completa está en [`docs/privacidad.md`](docs/privacidad.md) y debe reflejar siempre el comportamiento real de la versión publicada.
 
 ---
 
 # 🔒 Seguridad
 
-No almacenar nunca dentro del repositorio:
+No almacenes nunca dentro del repositorio contraseñas, claves de API, tokens, claves secretas, credenciales ni certificados privados.
 
-```text
-passwords
-API keys
-tokens
-secret keys
-credentials
-private certificates
-```
-
-Antes de cada publicación:
-
-* Revisar permisos.
-* Revisar dependencias.
-* Revisar código fuente.
-* Revisar información sensible.
-* Revisar versión del `manifest.json`.
+Antes de cada publicación: revisar permisos, dependencias, código fuente, información sensible y la versión del `manifest.json`.
 
 ---
 
-# 📚 Documentación adicional
+# 📚 Documentación
 
-El proyecto debería mantener los siguientes documentos:
-
-```text
-docs/
-│
-├── alcance.md
-├── requisitos.md
-├── diseño.md
-├── arquitectura.md
-├── plan-de-pruebas.md
-├── privacidad.md
-├── guia-de-usuario.md
-└── roadmap.md
-```
-
-Estos documentos permiten que una persona con conocimientos técnicos básicos pueda comprender progresivamente el proyecto.
+| Documento                                            | Contenido                                                  |
+| ---------------------------------------------------- | ---------------------------------------------------------- |
+| [`CHANGELOG.md`](CHANGELOG.md)                       | Registro de cambios                                        |
+| [`docs/privacidad.md`](docs/privacidad.md)           | Política de privacidad                                     |
+| [`docs/plan-de-pruebas.md`](docs/plan-de-pruebas.md) | Pruebas automatizadas, criterios de aceptación y QA manual |
+| [`docs/publicacion.md`](docs/publicacion.md)         | Publicación en AMO, notas para revisores y releases        |
 
 ---
 
 # 📌 Versionado
 
-Se utilizará **Semantic Versioning**:
+Se utiliza **Semantic Versioning** (`MAJOR.MINOR.PATCH`):
 
-```text
-MAJOR.MINOR.PATCH
-```
+- **MAJOR**: cambios incompatibles (`1.0.0 → 2.0.0`).
+- **MINOR**: funcionalidad nueva compatible (`1.0.0 → 1.1.0`).
+- **PATCH**: corrección de errores (`1.0.0 → 1.0.1`).
 
-Ejemplo:
-
-```text
-1.0.0
-```
-
-### MAJOR
-
-Cambios incompatibles.
-
-```text
-1.0.0 → 2.0.0
-```
-
-### MINOR
-
-Nueva funcionalidad compatible.
-
-```text
-1.0.0 → 1.1.0
-```
-
-### PATCH
-
-Corrección de errores.
-
-```text
-1.0.0 → 1.0.1
-```
-
----
-
-# 📝 Changelog
-
-## [1.0.0] — Primera versión
-
-### Agregado
-
-* Juego Snake.
-* Movimiento mediante teclado.
-* Comida.
-* Puntuación.
-* Récord.
-* Pausa.
-* Reinicio.
-* Almacenamiento local.
+Los cambios se registran en [`CHANGELOG.md`](CHANGELOG.md).
 
 ---
 
@@ -663,31 +434,29 @@ Corrección de errores.
 
 ## Versión 1.0
 
-* [x] Juego básico.
-* [ ] Tests unitarios.
-* [ ] Pruebas manuales.
-* [ ] Publicación Firefox.
+- [x] Juego básico.
+- [x] Tests unitarios.
+- [ ] Pruebas manuales.
+- [ ] Publicación Firefox.
 
 ## Versión 1.1
 
 Posibles mejoras:
 
-* [ ] Diferentes velocidades.
-* [ ] Niveles.
-* [ ] Nuevos diseños.
-* [ ] Sonidos.
-* [ ] Animaciones.
+- [ ] Diferentes velocidades.
+- [ ] Niveles.
+- [ ] Panel lateral (`sidebar_action`) para jugar sin que el popup se cierre.
+- [ ] Sonidos.
+- [ ] Animaciones.
 
 ## Versión 2.0
 
-Posibles funcionalidades:
+- [ ] Diferentes modos de juego.
+- [ ] Obstáculos.
+- [ ] Rankings locales.
+- [ ] Personalización visual.
 
-* [ ] Diferentes modos de juego.
-* [ ] Obstáculos.
-* [ ] Rankings locales.
-* [ ] Personalización visual.
-
-Las funcionalidades futuras deberán evaluarse antes de incorporarlas para evitar aumentar innecesariamente los permisos, complejidad y requisitos de publicación.
+Cada funcionalidad futura debe evaluarse para no aumentar innecesariamente los permisos, la complejidad ni los requisitos de publicación.
 
 ---
 
@@ -695,93 +464,36 @@ Las funcionalidades futuras deberán evaluarse antes de incorporarlas para evita
 
 Las contribuciones son bienvenidas.
 
-Proceso recomendado:
-
 ```text
-Fork
-  ↓
-Crear branch
-  ↓
-Realizar cambios
-  ↓
-Ejecutar tests
-  ↓
-Crear Pull Request
-  ↓
-Code Review
-  ↓
-Merge
+Fork → Crear rama → Cambios → npm run check → Pull Request → Revisión → Merge
 ```
-
-Ejemplo:
 
 ```bash
 git checkout -b feature/nuevo-modo-juego
-```
-
-Después de realizar los cambios:
-
-```bash
+npm run check
 git add .
 git commit -m "feat: agregar nuevo modo de juego"
 git push origin feature/nuevo-modo-juego
 ```
 
+Al abrir el Pull Request se ejecutará la integración continua (formato, lint, tests, validación y build).
+
 ---
 
 # 📄 Licencia
 
-Este proyecto utiliza la licencia:
+Licencia basada en MIT, con condiciones adicionales de atribución y de indicación de modificaciones. Puedes usar, copiar, modificar y redistribuir el código, incluso con fines comerciales.
 
-```text
-MIT License
-```
+- Las redistribuciones deben conservar la atribución al proyecto original.
+- Las versiones modificadas deben indicar claramente que fueron modificadas.
+- No debe sugerirse el respaldo del autor original.
 
-Consultar el archivo:
-
-```text
-LICENSE
-```
-
-para conocer las condiciones completas de uso.
+Consulta el archivo [`LICENSE`](LICENSE) para conocer los términos completos.
 
 ---
 
 # 👨‍💻 Proyecto educativo
 
-Este proyecto está diseñado para demostrar cómo crear una extensión de navegador utilizando tecnologías web estándar.
+Este proyecto demuestra cómo crear una extensión de navegador con tecnologías web estándar: HTML → CSS → JavaScript → WebExtensions → Manifest → Testing → Git/GitHub → Publicación.
 
-Puede utilizarse como práctica para aprender:
-
-```text
-HTML
- ↓
-CSS
- ↓
-JavaScript
- ↓
-WebExtensions
- ↓
-Manifest
- ↓
-Testing
- ↓
-Git/GitHub
- ↓
-Publicación
-```
-
----
-
-# 🐍 ¡A jugar!
-
-```text
-███████╗███╗   ██╗ █████╗ ██╗  ██╗███████╗
-██╔════╝████╗  ██║██╔══██╗██║ ██╔╝██╔════╝
-███████╗██╔██╗ ██║███████║█████╔╝ █████╗
-╚════██║██║╚██╗██║██╔══██║██╔═██╗ ██╔══╝
-███████║██║ ╚████║██║  ██║██║  ██╗███████╗
-╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
-```
-
-**Diviértete desarrollando y jugando Snake directamente desde Firefox.**
+**¡Diviértete desarrollando y jugando Snake directamente desde Firefox!** 🐍
