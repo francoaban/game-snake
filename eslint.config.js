@@ -17,6 +17,8 @@ export default [
     },
     rules: {
       eqeqeq: "error",
+      semi: ["error", "always"],
+      quotes: ["error", "double", { avoidEscape: true }],
       "no-var": "error",
       "prefer-const": "error"
     }
